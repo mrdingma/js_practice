@@ -1,15 +1,38 @@
-function getData(url) {
-  return axios.get(url).then((response) => response.data.split("\n"));
+function getData(method, url) {
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.onload = function () {
+      if (this.status >= 200 && this.status < 300) {
+        resolve(xhr.response.split("\n"));
+      } else {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText,
+        });
+      }
+    };
+    xhr.onerror = function () {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText,
+      });
+    };
+    xhr.send();
+  });
 }
 
 async function processedData() {
   const url1 = "https://publictest.sandbox.tabapay.net/data1";
   const url2 = "https://publictest.sandbox.tabapay.net/data2";
   try {
-    let nameArr = await getData(url1);
+    let nameArr = await getData("GET", url1);
+    debugger;
     nameArr = nameArr.map((data) => data.replace(/[^a-zA-Z]/gi, ""));
 
-    let dataArr = await getData(url2);
+    let dataArr = await getData("GET", url2);
+
+    debugger;
 
     insertRows(nameArr, dataArr);
   } catch (e) {
