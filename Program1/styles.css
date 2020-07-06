@@ -1,0 +1,47 @@
+.calendar-container {
+  border: 1px solid black;
+  width: 320px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.header-container {
+  padding: 10px 0;
+  background-color: #256525;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* S -  S */
+.day {
+  color: #256525;
+  background-color: #cba93f;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* 1-31 */
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.today {
+  background-color: #cba93f;
+  color: white;
+}
+
+.dates div,
+.empty-cell {
+  width: 14%;
+  padding: 7px 0;
+  text-align: center;
+}
+
+.number:hover {
+  background-color: #256525;
+  color: white;
+}

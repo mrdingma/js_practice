@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+  </head>
+
+  <body>
+    <div>
+      <div id="tophalf">
+        <div id="wrapper">
+          <div class="card-face" id="cc-container-front">
+            <div id="cc">
+              <div id="logo">
+                <span class="line1">Taba</span>
+                <span class="line2">Pay</span>
+              </div>
+              <div id="logo-text">
+                <span class="line1">There and back again</span>
+                <span class="line2">Payments</span>
+              </div>
+              <img
+                id="altLogo"
+                class="hide"
+                src="https://www.tabapay.com/CI/BA.png"
+              />
+              <img id="chip" src="https://www.tabapay.com/CI/Chip.png" />
+              <div id="dots">●●●● ●●●● ●●●● ●●●●</div>
+              <div id="exp-date-text">Good Thru ▶</div>
+              <div id="exp-date">●●/●●</div>
+              <div id="name">TabaPay Customer</div>
+              <img
+                id="circle-logo"
+                src="https://www.tabapay.com/CI/TabaPay.png"
+              />
+            </div>
+          </div>
+          <div class="card-face" id="cc-container-back">
+            <div id="cc">
+              <div id="cc-stripe"></div>
+              <div id="lines"></div>
+              <div id="ccv">●●●</div>
+              <img
+                id="circle-logo-back"
+                src="https://www.tabapay.com/CI/TabaPay.png"
+              />
+              <div id="address-container">
+                <div id="address-1">
+                  <span class="line1">Taba</span>
+                  <span class="line2">Pay</span>
+                </div>
+                <div id="address-2">
+                  465 Fairchild Drive &nbsp; Suite #222<br />Mountain View, CA
+                  &nbsp; 94043
+                </div>
+                <div id="address-3">
+                  +1 415-980-8222
+                </div>
+                <div id="address-4">
+                  www.<span class="n1">taba</span
+                  ><span class="n2">pay</span>.com
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form>
+        <div class="section">
+          <div>
+            <label>Card Number </label>
+            <span id="e1" class="error-text"
+              >Please enter your Card Number</span
+            >
+          </div>
+          <input
+            id="in1"
+            type="text"
+            value=""
+            onfocus="flipCard('front')"
+            onchange="changeHandler(1)"
+            oninput="changeHandler(1)"
+            placeholder="13-19 digits"
+            required
+          />
+        </div>
+
+        <div class="section">
+          <div>
+            <label>Expiration Date </label>
+            <span id="e2" class="error-text"
+              >Please enter your Expiration Date</span
+            >
+          </div>
+          <input
+            id="in2"
+            type="text"
+            value=""
+            onfocus="flipCard('front')"
+            onchange="changeHandler(2)"
+            oninput="changeHandler(2)"
+            placeholder="MM/YY format"
+            required
+          />
+        </div>
+
+        <div class="section">
+          <div>
+            <label>Security Code </label>
+            <span id="e3" class="error-text"
+              >Please enter your Security Code</span
+            >
+          </div>
+          <input
+            id="in3"
+            type="text"
+            value=""
+            onfocus="flipCard('back')"
+            onchange="changeHandler(3)"
+            oninput="changeHandler(3)"
+            placeholder="Optional 3-4 digits"
+            required
+          />
+        </div>
+
+        <div class="section">
+          <div>
+            <label>Name </label>
+          </div>
+          <input
+            id="in4"
+            type="text"
+            value=""
+            onfocus="flipCard('front')"
+            onchange="changeHandler(4)"
+            oninput="changeHandler(4)"
+            placeholder="Cardholder Name"
+            required
+          />
+        </div>
+
+        <div class="btn-section">
+          <input
+            type="button"
+            id="clearbtn"
+            class="btn"
+            value="Clear"
+            disabled
+          />
+          <input
+            type="submit"
+            id="submitbtn"
+            class="btn"
+            value="Get Card Data"
+            disabled
+          />
+          <p>
+            <input type="button" class="btn" value="Cancel" />
+          </p>
+        </div>
+      </form>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

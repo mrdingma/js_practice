@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+
+  <body onload="renderDate()">
+    <div class="calendar-container">
+      <div class="header-container">
+        <div onclick="changeMonth('prev')">&#9667;</div>
+        <div>
+          <span id="month">February &nbsp; </span>
+          <span id="year">2019</span>
+        </div>
+        <div onclick="changeMonth('next')" style="transform: rotate(180deg);">
+          &#9667;
+        </div>
+      </div>
+      <div class="day">
+        <div><b>S</b></div>
+        <div><b>M</b></div>
+        <div><b>T</b></div>
+        <div><b>W</b></div>
+        <div><b>T</b></div>
+        <div><b>F</b></div>
+        <div><b>S</b></div>
+      </div>
+      <div class="dates"></div>
+    </div>
+    <script>
+      let now = new Date();
+
+      function renderDate() {
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        let currentDay = new Date().getDate();
+        let currentMonth = now.getMonth();
+        let currentYear = now.getFullYear();
+        now.setDate(1);
+        let firstOfMonthDay = now.getDay();
+        let lastOfMonthDay = new Date(
+          currentYear,
+          currentMonth + 1,
+          0
+        ).getDate();
+
+        let cells = "";
+        for (let i = 0; i < firstOfMonthDay; i++) {
+          cells += `<div class="empty_cell"></div>`;
+        }
+
+        for (let i = 1; i <= lastOfMonthDay; i++) {
+          if (i === currentDay && currentMonth === new Date().getMonth()) {
+            cells += `<div class="number today">${i}</div>`;
+          } else {
+            cells += `<div class="number">${i}</div>`;
+          }
+        }
+
+        document.getElementById("month").innerHTML = `${months[currentMonth]} `;
+        document.getElementById("year").innerHTML = currentYear;
+        document.getElementsByClassName("dates")[0].innerHTML = cells;
+        document.querySelectorAll(".number").forEach((date) => {
+          date.addEventListener("click", (e) => alertDate(e));
+        });
+      }
+      function changeMonth(param) {
+        if (param === "prev") {
+          now.setMonth(now.getMonth() - 1);
+        } else {
+          now.setMonth(now.getMonth() + 1);
+        }
+        renderDate();
+      }
+      function alertDate(e) {
+        const threeMonthPrev = new Date();
+        threeMonthPrev.setDate(threeMonthPrev.getDate() - 90);
+
+        const dateStr = `${now.getMonth() + 1}/${
+          e.target.innerText
+        }/${now.getFullYear()}`;
+        const clickedDate = new Date(dateStr);
+
+        if (clickedDate.getTime() >= threeMonthPrev.getTime()) {
+          alert(dateStr);
+        }
+      }
+    </script>
+  </body>
+</html>

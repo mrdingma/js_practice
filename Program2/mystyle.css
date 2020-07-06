@@ -1,0 +1,26 @@
+ul {
+  list-style-type: none;
+}
+
+.caret {
+  cursor: pointer;
+}
+
+.caret::before {
+  margin-right: 6px;
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+}
+
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
