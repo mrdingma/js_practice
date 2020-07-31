@@ -1,1 +1,1 @@
-# tabapay
+# Various pure JS exercises
