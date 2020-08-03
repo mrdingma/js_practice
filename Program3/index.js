@@ -27,13 +27,10 @@ async function processedData() {
   const url2 = "https://publictest.sandbox.tabapay.net/data2";
   try {
     let nameArr = await getData("GET", url1);
-    debugger;
     nameArr = nameArr.map((data) => data.replace(/[^a-zA-Z]/gi, ""));
 
     let dataArr = await getData("GET", url2);
-
-    debugger;
-
+    
     insertRows(nameArr, dataArr);
   } catch (e) {
     console.log(e);
